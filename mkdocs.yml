@@ -1,0 +1,4 @@
+site_name: The OpenPM Playbook
+site_url: https://OpenPM-Foundry.github.io/The-OpenPM-Playbook/
+theme:
+  name: material
