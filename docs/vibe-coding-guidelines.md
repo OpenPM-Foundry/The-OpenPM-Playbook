@@ -1,4 +1,4 @@
-# Comprehensive Vibe Coding Guideline for Zero-to-One Stage Startups
+# Guidelines for the "Vibe Coders"
 
 ---
 

@@ -47,7 +47,7 @@ This section will outline the planned evolution of the playbook. Include:
 
 Each section below will have its own dedicated page(s) in the Wiki:
 
-## **4.1 Guideline for "The Vibe Coders"**
+## **4.1 [Guideline for "The Vibe Coders"](/vibe-coding-guidelines)**
 
 - Define what "vibe coders" means in your context.
 - Practices to foster creativity, collaboration, and innovation within teams.
