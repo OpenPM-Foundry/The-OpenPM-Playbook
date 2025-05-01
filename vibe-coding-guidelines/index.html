@@ -1,0 +1,1441 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://OpenPM-Foundry.github.io/The-OpenPM-Playbook/vibe-coding-guidelines/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Guidelines for the "Vibe Coders" - The OpenPM Playbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2afb09e1.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#guidelines-for-the-vibe-coders" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="The OpenPM Playbook" class="md-header__button md-logo" aria-label="The OpenPM Playbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            The OpenPM Playbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Guidelines for the "Vibe Coders"
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="The OpenPM Playbook" class="md-nav__button md-logo" aria-label="The OpenPM Playbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    The OpenPM Playbook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wiki Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Guidelines for the "Vibe Coders"
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Guidelines for the "Vibe Coders"
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#executive-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Executive Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction-to-vibe-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Introduction to Vibe Coding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction to Vibe Coding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-vibe-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use Vibe Coding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-not-to-use-vibe-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      When Not to Use Vibe Coding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visual-guide-to-vibe-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visual Guide to Vibe Coding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visual Guide to Vibe Coding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traditional-vs-vibe-coding-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traditional vs. Vibe Coding Comparison
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-setting-up-your-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Setting Up Your Project
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Setting Up Your Project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-define-project-boundaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Define Project Boundaries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-leverage-ai-to-create-the-frd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Leverage AI to Create the FRD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-choose-a-technology-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Choose a Technology Stack
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-select-ai-tools-and-ides" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Select AI Tools and IDEs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-configure-project-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Configure Project Rules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-setup-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project Setup Checklist
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-planning-and-task-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Planning and Task Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Planning and Task Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-split-features-into-subtasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Split Features into Subtasks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-ensure-comprehensive-frd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Ensure Comprehensive FRD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-prioritize-tasks-with-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Prioritize Tasks with AI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-development-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Development Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Development Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-reinforce-project-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Reinforce Project Rules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-build-modules-with-ai-assistance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Build Modules with AI Assistance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-handle-bugs-and-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Handle Bugs and Errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#daily-development-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Daily Development Checklist
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prompt-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt Engineering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Considerations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Quality
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-transitioning-to-production" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Transitioning to Production
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Transitioning to Production">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-technical-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Technical Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-rewrite-key-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Rewrite Key Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-upgrade-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Upgrade Infrastructure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#production-transition-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Transition Checklist
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-case-studies" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Case Studies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Case Studies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#case-study-1-social-media-analytics-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      Case Study 1: Social Media Analytics Tool
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#executive-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Executive Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction-to-vibe-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Introduction to Vibe Coding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction to Vibe Coding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-use-vibe-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use Vibe Coding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-not-to-use-vibe-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      When Not to Use Vibe Coding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visual-guide-to-vibe-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visual Guide to Vibe Coding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visual Guide to Vibe Coding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traditional-vs-vibe-coding-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traditional vs. Vibe Coding Comparison
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-setting-up-your-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Setting Up Your Project
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Setting Up Your Project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-define-project-boundaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Define Project Boundaries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-leverage-ai-to-create-the-frd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Leverage AI to Create the FRD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-choose-a-technology-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Choose a Technology Stack
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-select-ai-tools-and-ides" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Select AI Tools and IDEs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-configure-project-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Configure Project Rules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#project-setup-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project Setup Checklist
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-planning-and-task-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Planning and Task Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Planning and Task Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-split-features-into-subtasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Split Features into Subtasks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-ensure-comprehensive-frd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Ensure Comprehensive FRD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-prioritize-tasks-with-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Prioritize Tasks with AI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-development-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Development Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Development Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-reinforce-project-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Reinforce Project Rules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-build-modules-with-ai-assistance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Build Modules with AI Assistance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-handle-bugs-and-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Handle Bugs and Errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#daily-development-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Daily Development Checklist
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prompt-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt Engineering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Considerations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Quality
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-transitioning-to-production" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Transitioning to Production
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Transitioning to Production">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-technical-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Technical Assessment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-rewrite-key-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Rewrite Key Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-upgrade-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Upgrade Infrastructure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#production-transition-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Transition Checklist
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-case-studies" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Case Studies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Case Studies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#case-study-1-social-media-analytics-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      Case Study 1: Social Media Analytics Tool
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="guidelines-for-the-vibe-coders">Guidelines for the "Vibe Coders"</h1>
+<hr />
+<h2 id="executive-summary">Executive Summary</h2>
+<p>Vibe coding is a revolutionary approach that leverages artificial intelligence to accelerate software development for startups and innovation teams. By combining AI-powered code generation with strategic human oversight, vibe coding enables teams to build MVPs and prototypes in a fraction of the traditional development time. This methodology excels in scenarios where speed and iteration are prioritized over enterprise-grade robustness, allowing startups to validate ideas quickly and cost-effectively.</p>
+<p>Studies from McKinsey and Microsoft indicate that developers using AI tools can achieve 50-80% productivity gains, translating to significant cost savings and faster time-to-market. However, vibe coding requires clear boundaries, rigorous code reviews, and a thoughtful transition strategy as products mature. This guide provides a comprehensive framework for implementing vibe coding effectively while maintaining quality and security standards.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#1-introduction-to-vibe-coding">1. Introduction to Vibe Coding</a></li>
+<li><a href="#2-setting-up-your-project">2. Setting Up Your Project</a></li>
+<li><a href="#3-planning-and-task-management">3. Planning and Task Management</a></li>
+<li><a href="#4-development-workflow">4. Development Workflow</a></li>
+<li><a href="#5-best-practices">5. Best Practices</a></li>
+<li><a href="#6-transitioning-to-production">6. Transitioning to Production</a></li>
+<li><a href="#7-case-studies">7. Case Studies</a></li>
+<li><a href="#8-troubleshooting-common-issues">8. Troubleshooting Common Issues</a></li>
+<li><a href="#9-measuring-success">9. Measuring Success</a></li>
+<li><a href="#10-community-and-learning-resources">10. Community and Learning Resources</a></li>
+<li><a href="#11-glossary-of-terms">11. Glossary of Terms</a></li>
+<li><a href="#12-conclusion">12. Conclusion</a></li>
+</ul>
+<h2 id="1-introduction-to-vibe-coding">1. Introduction to Vibe Coding</h2>
+<p>Vibe coding is an innovative approach that harnesses artificial intelligence (AI) to accelerate software development, particularly for creating Minimum Viable Products (MVPs) and prototypes. An MVP is a basic product version with just enough features to attract early users and gather feedback. For zero-to-one stage startups, vibe coding offers significant advantages: it reduces development time, lowers costs, and enables rapid idea validation. A <a href="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/unleashing-developer-productivity-with-generative-ai">McKinsey study</a> found that developers using generative AI can complete tasks up to twice as fast, and a <a href="https://www.intelligenic.ai/articles/cost-reduction-in-software-development-the-benefits-of-an-ai-driven-sdlc">Microsoft study</a> reported 50% productivity gains with tools like GitHub Copilot. These gains suggest potential cost reductions, though exact savings vary by project.</p>
+<h3 id="when-to-use-vibe-coding">When to Use Vibe Coding</h3>
+<p>Vibe coding excels in scenarios prioritizing speed and iteration:</p>
+<ul>
+<li><strong>MVPs and Prototypes</strong>: Quickly test product-market fit.</li>
+<li><strong>Internal Tools</strong>: Build utilities for team efficiency.</li>
+<li><strong>Feature Proofs of Concept</strong>: Experiment with new ideas.</li>
+<li><strong>Non-Production Exploratory Work</strong>: Explore innovative solutions.</li>
+<li><strong>Educational Demos</strong>: Create learning materials efficiently.</li>
+</ul>
+<h3 id="when-not-to-use-vibe-coding">When Not to Use Vibe Coding</h3>
+<p>It’s less suitable for:</p>
+<ul>
+<li><strong>Mission-Critical Systems</strong>: Where failure is unacceptable.</li>
+<li><strong>High-Security Applications</strong>: Requiring robust protection.</li>
+<li><strong>High-Uptime Systems</strong>: Needing 99.9%+ availability.</li>
+<li><strong>High-Throughput Transaction Systems</strong>: Handling large transaction volumes.</li>
+<li><strong>Regulated Industry Applications</strong>: Subject to strict compliance.</li>
+</ul>
+<p>These boundaries, supported by <a href="https://www.techtarget.com/searchitoperations/feature/The-promises-and-risks-of-AI-in-software-development">TechTarget</a>, highlight the need for caution due to potential AI-generated code vulnerabilities.</p>
+<h3 id="visual-guide-to-vibe-coding">Visual Guide to Vibe Coding</h3>
+<h4 id="traditional-vs-vibe-coding-comparison">Traditional vs. Vibe Coding Comparison</h4>
+<table>
+<thead>
+<tr>
+<th>Development Aspect</th>
+<th>Traditional Approach</th>
+<th>Vibe Coding Approach</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Time to MVP</td>
+<td>3-6 months</td>
+<td>2-8 weeks</td>
+</tr>
+<tr>
+<td>Development Cost</td>
+<td>$$$$</td>
+<td>$$</td>
+</tr>
+<tr>
+<td>Team Size Required</td>
+<td>3-5 developers</td>
+<td>1-2 developers</td>
+</tr>
+<tr>
+<td>Code Quality</td>
+<td>Consistent, well-architected</td>
+<td>Varies, requires review</td>
+</tr>
+<tr>
+<td>Scalability</td>
+<td>Built-in from start</td>
+<td>May require refactoring</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>Systematic approach</td>
+<td>Requires additional verification</td>
+</tr>
+<tr>
+<td>Maintenance</td>
+<td>Standard practices</td>
+<td>May need more documentation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-setting-up-your-project">2. Setting Up Your Project</h2>
+<p>A well-defined setup is crucial for vibe coding success, involving clear project scoping, tool selection, and environment configuration.</p>
+<h3 id="step-1-define-project-boundaries">Step 1: Define Project Boundaries</h3>
+<p>Create a <strong>Functional Requirements Document (FRD)</strong> to outline software features and functionalities. The FRD should:</p>
+<ul>
+<li><strong>Specify Features</strong>: List features with clear numbering (e.g., Feature 1: User Authentication, Module 1.1: Login).</li>
+<li><strong>Define Scope</strong>: Include in-scope and out-of-scope sections to prevent scope creep.</li>
+<li><strong>Set Constraints</strong>: Detail limits like API rate limits (e.g., 100 requests/minute), file counts, or code line limits.</li>
+<li><strong>Plan for Future</strong>: Note potential future enhancements (e.g., adding two-factor authentication).</li>
+</ul>
+<p><strong>Example FRD Snippet</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Feature ID</th>
+<th>Description</th>
+<th>Constraints</th>
+<th>Future Enhancements</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1/M1.1</td>
+<td>User Login</td>
+<td>&lt;200ms response, 100 req/min</td>
+<td>Add OAuth support</td>
+<td></td>
+</tr>
+<tr>
+<td>F1/M1.2</td>
+<td>Password Reset</td>
+<td>Email rate limit: 5/hour</td>
+<td>Add SMS option</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-2-leverage-ai-to-create-the-frd">Step 2: Leverage AI to Create the FRD</h3>
+<p>Use advanced Large Language Models (LLMs) from providers like Anthropic or OpenAI to draft the FRD. Provide a detailed project idea, and the AI can structure requirements. For example:</p>
+<ul>
+<li><strong>Prompt</strong>: “Create an FRD for a social media analytics tool with data aggregation and basic dashboards, using Next.js and FastAPI.”</li>
+<li>Refine the AI-generated document to ensure accuracy.</li>
+</ul>
+<h3 id="step-3-choose-a-technology-stack">Step 3: Choose a Technology Stack</h3>
+<p>Select technologies with large user bases and strong AI tool compatibility:</p>
+<ul>
+<li><strong>Frontend</strong>: Next.js or React for web applications.</li>
+<li><strong>Backend</strong>: Python with FastAPI for rapid API development.</li>
+<li><strong>Database</strong>: Supabase (PostgreSQL) or MongoDB for flexibility.</li>
+</ul>
+<p>These choices are popular and well-supported by AI tools like Cursor, which excels with JavaScript and Python, as noted in <a href="https://www.unite.ai/best-ai-code-generators/">Best AI Code Generators</a>.</p>
+<h3 id="step-4-select-ai-tools-and-ides">Step 4: Select AI Tools and IDEs</h3>
+<p>Choose AI-powered tools for efficient development:</p>
+<ul>
+<li><strong>Integrated Development Environment (IDE)</strong>: An AI-powered IDE like Cursor, such as those with natural language command support, enhances code generation.</li>
+<li><strong>AI Models</strong>: Advanced LLMs from Anthropic or OpenAI for high-quality code generation.</li>
+<li><strong>Supporting Tools</strong>: Snyk for security audits and GitHub Actions for CI/CD pipelines.</li>
+</ul>
+<p>Research tools to ensure they meet project needs, leveraging free trials where available.</p>
+<h3 id="step-5-configure-project-rules">Step 5: Configure Project Rules</h3>
+<p>In your AI-powered IDE, set up rules to enforce standards, guided by resources like <a href="https://cursor.directory/rules">Cursor Directory Rules</a> and <a href="https://github.com/PatrickJS/awesome-cursorrules">Awesome Cursor Rules</a>:</p>
+<ul>
+<li><strong>Coding Standards</strong>: Ensure consistent style and error handling.</li>
+<li><strong>Security Rules</strong>: Enable secrets detection and injection prevention.</li>
+<li><strong>Version Control</strong>: Require commits after milestones with descriptive messages.</li>
+</ul>
+<p><strong>Example .viberules File</strong>:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">codegen</span><span class="p">:</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">max_file_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">test_coverage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">required</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">error_handling</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">required</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">dependencies</span><span class="p">:</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">whitelist</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;react&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;fastapi&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;prisma&quot;</span><span class="p p-Indicator">]</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nt">security</span><span class="p">:</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nt">secrets_detection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enabled</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nt">injection_prevention</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">strict</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nt">version_control</span><span class="p">:</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="nt">commit_after_milestones</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span></code></pre></div>
+<p>Include third-party service documentation links in IDE settings for easy reference.</p>
+<h3 id="project-setup-checklist">Project Setup Checklist</h3>
+<ul>
+<li>[ ] Define project scope and create FRD.</li>
+<li>[ ] Select technology stack (e.g., Next.js, FastAPI).</li>
+<li>[ ] Choose AI tools (e.g., Cursor, advanced LLMs).</li>
+<li>[ ] Configure project rules in IDE.</li>
+<li>[ ] Set up version control with Git.</li>
+</ul>
+<h2 id="3-planning-and-task-management">3. Planning and Task Management</h2>
+<p>Effective planning ensures clear priorities and smooth development.</p>
+<h3 id="step-1-split-features-into-subtasks">Step 1: Split Features into Subtasks</h3>
+<p>Use an AI model to break features into manageable subtasks. For example:</p>
+<ul>
+<li><strong>Feature</strong>: User Authentication</li>
+<li><strong>Subtasks</strong>:</li>
+<li>Implement login endpoint.</li>
+<li>Set up JWT token generation.</li>
+<li>Create password reset flow.</li>
+<li>Write unit tests.</li>
+</ul>
+<p><strong>Prompt</strong>: “Break down the User Authentication feature into subtasks for a FastAPI backend.”</p>
+<h3 id="step-2-ensure-comprehensive-frd">Step 2: Ensure Comprehensive FRD</h3>
+<p>Verify the FRD includes:</p>
+<ul>
+<li><strong>Feature Limits</strong>: E.g., “Login endpoint handles 100 requests/minute.”</li>
+<li><strong>Future Enhancements</strong>: E.g., “Add biometric authentication in V2.”</li>
+<li><strong>Technical Constraints</strong>: E.g., “Use PostgreSQL with 10GB storage limit.”</li>
+</ul>
+<p>This foresight supports scalability and minimizes rework.</p>
+<h3 id="step-3-prioritize-tasks-with-ai">Step 3: Prioritize Tasks with AI</h3>
+<p>Share the FRD and subtasks with the AI via your AI-powered IDE’s chat feature to prioritize tasks. For example:</p>
+<ul>
+<li><strong>Prompt</strong>: “Prioritize User Authentication subtasks to optimize development flow.”</li>
+<li>The AI may suggest starting with the database schema, followed by the login endpoint.</li>
+</ul>
+<p>This ensures logical dependency handling.</p>
+<h2 id="4-development-workflow">4. Development Workflow</h2>
+<p>Execute development with a structured workflow to maximize AI benefits.</p>
+<h3 id="step-1-reinforce-project-rules">Step 1: Reinforce Project Rules</h3>
+<p>Ensure IDE rules maintain:</p>
+<ul>
+<li><strong>Code Quality</strong>: Consistent formatting and error handling.</li>
+<li><strong>Security</strong>: Protection against vulnerabilities.</li>
+<li><strong>Commits</strong>: Regular commits with descriptive messages.</li>
+</ul>
+<h3 id="step-2-build-modules-with-ai-assistance">Step 2: Build Modules with AI Assistance</h3>
+<p>For each feature:</p>
+<ul>
+<li><strong>Write Tests First</strong>: Develop unit and integration tests before coding, following Test-Driven Development (TDD).</li>
+<li><strong>Instruct AI Clearly</strong>: Use detailed prompts for code generation.</li>
+</ul>
+<p><strong>Example Prompt</strong>:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>As a backend developer, implement a user registration endpoint in FastAPI that:
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">-</span><span class="w"> </span>Accepts username, email, and password.
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">-</span><span class="w"> </span>Validates unique email.
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">-</span><span class="w"> </span>Hashes password with bcrypt.
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">-</span><span class="w"> </span>Stores user in PostgreSQL via SQLAlchemy.
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">-</span><span class="w"> </span>Returns user ID on success.
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>  Generate unit tests using pytest.
+</span></code></pre></div>
+<ul>
+<li><strong>Review Code</strong>: Manually verify AI-generated code for correctness and efficiency.</li>
+</ul>
+<h3 id="step-3-handle-bugs-and-errors">Step 3: Handle Bugs and Errors</h3>
+<p>For bugs:</p>
+<ul>
+<li><strong>Provide Context</strong>: Share error logs with the AI.</li>
+<li><strong>Include Screenshots</strong>: For UI issues, provide visuals.</li>
+<li><strong>Prompt AI for Fixes</strong>: E.g., “Fix TypeError in router.py by handling null responses.”</li>
+</ul>
+<p><strong>Example Bug Report</strong>:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>The login endpoint crashes with a 500 error for invalid credentials. Error log:
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>[TypeError: &#39;NoneType&#39; object is not subscriptable]
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Modify to return a 401 status with &#39;Invalid credentials&#39; message.
+</span></code></pre></div>
+<h3 id="daily-development-checklist">Daily Development Checklist</h3>
+<ul>
+<li>[ ] Define daily subtasks.</li>
+<li>[ ] Write tests before coding.</li>
+<li>[ ] Generate and review AI code.</li>
+<li>[ ] Commit code with descriptive messages.</li>
+<li>[ ] Update documentation.</li>
+</ul>
+<h2 id="5-best-practices">5. Best Practices</h2>
+<p>Optimize vibe coding with these practices.</p>
+<h3 id="prompt-engineering">Prompt Engineering</h3>
+<p>Craft precise prompts to enhance AI output:</p>
+<ul>
+<li><strong>Structure</strong>: Specify role, task, requirements, and constraints.</li>
+<li><strong>Example Frontend Prompt</strong>:</li>
+</ul>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>As a frontend developer, create a React component for a user profile page that:
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">-</span><span class="w"> </span>Displays name, email, and profile picture.
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">-</span><span class="w"> </span>Fetches data from &#39;/api/user&#39;.
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">-</span><span class="w"> </span>Handles loading and error states.
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">-</span><span class="w"> </span>Uses Tailwind CSS.
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">-</span><span class="w"> </span>Includes Jest tests.
+</span></code></pre></div>
+<ul>
+<li><strong>Example Security Prompt</strong>:</li>
+</ul>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Implement a password hashing function using bcrypt that:
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">-</span><span class="w"> </span>Takes a plain text password.
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">-</span><span class="w"> </span>Uses 12 salt rounds.
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">-</span><span class="w"> </span>Handles errors.
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="k">-</span><span class="w"> </span>Avoids plaintext storage.
+</span></code></pre></div>
+<h3 id="security-considerations">Security Considerations</h3>
+<p>AI-generated code may introduce vulnerabilities, as noted by <a href="https://www.opsmx.com/blog/security-risks-of-ai-in-software-development-what-you-need-to-know/">OpsMx</a>. Mitigate risks:</p>
+<ul>
+<li><strong>Manual Reviews</strong>: Inspect authentication and data handling logic.</li>
+<li><strong>Automated Tools</strong>: Use Snyk and npm audit in CI pipelines.</li>
+<li><strong>Secure Practices</strong>: Enforce parameterized queries and secure credential storage.</li>
+</ul>
+<p><strong>Example Security Check</strong>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>npm<span class="w"> </span>audit<span class="w"> </span>--production
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>snyk<span class="w"> </span><span class="nb">test</span>
+</span></code></pre></div>
+<ul>
+<li><strong>Secrets Management</strong>: Use environment variables locally and cloud secrets managers in production.</li>
+<li><strong>Resource Governance</strong>: Set API rate limits to control costs and prevent abuse.</li>
+</ul>
+<p><strong>Example Rate Limit Configuration</strong>:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">endpoints</span><span class="p">:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="s">&quot;/api/auth/*&quot;</span><span class="p p-Indicator">:</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nt">limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10/minute</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="nt">burst</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="s">&quot;/api/data/*&quot;</span><span class="p p-Indicator">:</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="nt">limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100/hour</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="nt">burst</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">150</span>
+</span></code></pre></div>
+<h3 id="code-quality">Code Quality</h3>
+<p>AI-generated code may lack optimization. Developers should review and refine for performance, readability, and maintainability, using AI output as a starting point.</p>
+<h2 id="6-transitioning-to-production">6. Transitioning to Production</h2>
+<p>As the product scales, transition critical components to traditional development.</p>
+<h3 id="step-1-technical-assessment">Step 1: Technical Assessment</h3>
+<ul>
+<li><strong>Identify Critical Components</strong>: Focus on sensitive data or high-traffic areas.</li>
+<li><strong>Performance Testing</strong>: Test at 5x expected load.</li>
+<li><strong>Security Audits</strong>: Conduct penetration testing.</li>
+</ul>
+<h3 id="step-2-rewrite-key-components">Step 2: Rewrite Key Components</h3>
+<ul>
+<li><strong>Prioritize</strong>: Target high-risk or performance-critical parts.</li>
+<li><strong>Traditional Development</strong>: Engage experienced developers for quality.</li>
+<li><strong>Feature Parity</strong>: Ensure rewritten code matches original functionality.</li>
+</ul>
+<h3 id="step-3-upgrade-infrastructure">Step 3: Upgrade Infrastructure</h3>
+<ul>
+<li><strong>Scalability</strong>: Adopt containers (e.g., Docker, Kubernetes).</li>
+<li><strong>Monitoring</strong>: Implement dashboards with Prometheus or Grafana.</li>
+<li><strong>Incident Response</strong>: Document outage and breach procedures.</li>
+</ul>
+<h3 id="production-transition-checklist">Production Transition Checklist</h3>
+<ul>
+<li>[ ] Test at 5x expected traffic.</li>
+<li>[ ] Rewrite critical components.</li>
+<li>[ ] Set up monitoring and alerts.</li>
+<li>[ ] Document incident response plan.</li>
+</ul>
+<h2 id="7-case-studies">7. Case Studies</h2>
+<h3 id="case-study-1-social-media-analytics-tool">Case Study 1: Social Media Analytics Tool</h3>
+<p><strong>Challenge</strong>: A startup needed an MVP for a social media analytics tool to attract investors.</p>
+<p><strong>Solution</strong>: Using vibe coding with AI tools, they developed data aggregation and dashboard features in four weeks.</p>
+<p><strong>Outcome</strong>: The MVP gained early users, providing valuable feedback for iteration.</p>
+<p><strong>Transition</strong>: The team rewrote the data processing pipeline for scalability and enhanced security for user data.</p>
+<p>This case illustrates vibe coding’s ability to accelerate development while supporting strategic refactoring for production.</p>
+<h2 id="8-conclusion">8. Conclusion</h2>
+<p>Vibe coding empowers startups to rapidly build and test ideas using AI, but it demands clear boundaries, rigorous code reviews, and a scaling strategy. By following this guideline, startups can leverage AI’s potential while ensuring quality and security as they grow.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
