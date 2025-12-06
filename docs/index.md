@@ -1,6 +1,3 @@
-# Wiki Structure
----
-
 ## **1. Home (Introduction)**
 
 This will serve as the landing page of the Wiki and outline:

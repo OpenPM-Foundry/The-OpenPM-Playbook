@@ -1,12 +1,80 @@
 site_name: The OpenPM Playbook
-site_url: https://OpenPM-Foundry.github.io/The-OpenPM-Playbook/
-markdown_extensions:
-  - pymdownx.highlight:
-      anchor_linenums: true
-      line_spans: __span
-      pygments_lang_class: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences
+site_url: https://OpenPM-Foundry.github.io/The-OpenPM-Playbook/processes/engineering/vibe-coding-guidelines/
+site_author: OpenPM Foundry
+
 theme:
   name: material
+  features:
+    - navigation.instant
+    - navigation.tracking
+    # - navigation.tabs
+    - navigation.sections
+    # - navigation.expand
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.code.annotate
+    - content.code.copy
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: deep purple
+    - scheme: slate
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/openpm-foundry
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com
+
+nav:
+  - Home: index.md
+  - Processes:
+      - Engineering:
+          - Vibe Codeing Guidelines: processes/engineering/vibe-coding-guidelines.md
+          - Coding Standards: processes/engineering/coding-standards.md
+          - Code Review: processes/engineering/code-review.md
+          - Branching Strategy: processes/engineering/branching-strategy.md
+          - Release Process: processes/engineering/release-process.md
+  #     - Product:
+  #         - Requirement Gathering: processes/product/requirement-gathering.md
+  #         - Roadmap Planning: processes/product/roadmap-planning.md
+  #         - Sprint Planning: processes/product/sprint-planning.md
+  #     - QA:
+  #         - Test Strategy: processes/qa/test-strategy.md
+  #         - Bug Life Cycle: processes/qa/bug-life-cycle.md
+  #         - Automation Guidelines: processes/qa/automation-guidelines.md
+  #     - Operations:
+  #         - Incident Management: processes/ops/incident-management.md
+  #         - Monitoring: processes/ops/monitoring.md
+  #         - Postmortem Template: processes/ops/postmortem-template.md
+  # - Templates:
+  #     - PR Template: templates/pr-template.md
+  #     - Sprint Template: templates/sprint-template.md
+  #     - Incident Report: templates/incident-template.md
+
+plugins:
+  - search
+  - macros
+  - glightbox   # For image zoom
+  - mermaid2    # For diagrams
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.highlight
+  - pymdownx.emoji
+  - pymdownx.arithmatex
+  - footnotes
+  - tables
+  - toc:
+      toc_depth: 2
